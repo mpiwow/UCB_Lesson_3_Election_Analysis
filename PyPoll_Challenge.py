@@ -32,6 +32,7 @@ winning_count = 0
 winning_percentage = 0
 win_count = 0
 win_perc = 0
+win_county = 0
 
 # Open the election results and read the file.
 with open(file_to_load) as election_data:
@@ -95,21 +96,21 @@ with open(file_to_save, "w") as txt_file:
         print(county_results)
         txt_file.write(county_results)
 
-        if(votes > winning_count) and (vote_percentage > winning_percentage):
+        if(votes > win_count) and (vote_percentage > win_perc):
             win_count = votes
             win_perc = vote_percentage
-            winning_county = county
+            win_county = county
     
     #Print the winning county results
-    winning_county_summary = (
+    win_county_summary = (
         f"\n"
         f"-------------------------\n"
-        f"Largest County Turnout: {winning_county}\n"
+        f"Largest County Turnout: {win_county}\n"
         f"-------------------------\n")
-    print(winning_county_summary, end="")
+    print(win_county_summary, end="")
 
     # Save the winning vandidate results to text file
-    txt_file.write(winning_county_summary)
+    txt_file.write(win_county_summary)
     
     for candidate in candidate_votes:
         #Retrieve vote count and percentage
